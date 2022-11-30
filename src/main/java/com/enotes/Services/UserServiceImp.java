@@ -41,19 +41,38 @@ public class UserServiceImp implements  UserServices{
 
 	@Override
 	public User finUserByUserName(String userName) {
-      return null;
+       return userRepository.findByUsername(userName);
 	}
 
 	@Override
 	public Role findRoleByRoleName(String roleName) {
 		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.findByRoleName(roleName);
 	}
 
 	@Override
 	public void addRoleToUser(String username, String roleName) {
-		// TODO Auto-generated method stub
+		User user = finUserByUserName(username);
+		Role role = findRoleByRoleName(roleName);
+		 if(user.getRoles() !=null) {
+			  user.getRoles().add(role);
+			  userRepository.save(user);
+		 }
+		
 		
 	}
 
-}
+	@Override
+	public User authentificate(String userName, String password) {
+	   User user = userRepository.findByUsername(userName);
+	   if(user ==null)throw new RuntimeException("Bad credential");
+	   
+	   if(user.getPassword().equals(password)) {
+	    	 return user;
+	     }
+	  
+	   
+	
+	     		throw new RuntimeException("Bad credential");
+	
+	}}
