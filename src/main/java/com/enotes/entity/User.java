@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +33,7 @@ public class User {
 	private String password ;
 	
 	
+	@JsonProperty (access =JsonProperty.Access.WRITE_ONLY)
 	@ManyToMany(mappedBy="users",fetch = FetchType.EAGER)
 	private List<Role> roles  = new ArrayList<>();
 	
