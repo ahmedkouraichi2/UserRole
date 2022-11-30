@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 
 @Entity
@@ -30,6 +32,8 @@ public class Role {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="USER_ROLE")
+	
+	@JsonProperty (access =JsonProperty.Access.WRITE_ONLY)
 	private List<User> users = new ArrayList<>();
 
 	
