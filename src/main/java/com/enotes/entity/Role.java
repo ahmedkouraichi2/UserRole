@@ -3,7 +3,6 @@ package com.enotes.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,6 +35,9 @@ public class Role {
 	@JsonProperty (access =JsonProperty.Access.WRITE_ONLY)
 	private List<User> users = new ArrayList<>();
 
+	
+	
+	//getter & Setter
 	
 	public int getRoleId() {
 		return roleId;
